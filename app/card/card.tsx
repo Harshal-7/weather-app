@@ -10,14 +10,12 @@ import Image from "next/image";
 
 export const Card = () => {
   const [location, setLocation] = useState("");
-  const [lat, setLat] = useState(0);
-  const [lon, setLon] = useState(0);
   const [myData, setMyData] = useState(null);
 
-  // const api_key = process.env.WEATHER_API;
+  const api_key = process.env.NEXT_PUBLIC_WEATHER_API;
 
   const base_url = "https://api.openweathermap.org/data/2.5/weather?";
-  const geoLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${process.env.WEATHER_API}`;
+  const geoLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${api_key}`;
 
   const handleSubmit = async () => {
     try {
@@ -27,10 +25,7 @@ export const Card = () => {
       const myLon = responseGeo.data[0].lon;
 
       const responseWeather = await axios.get(
-        base_url +
-          `lat=${myLat}&` +
-          `lon=${myLon}&` +
-          `appid=${process.env.WEATHER_API}`
+        base_url + `lat=${myLat}&` + `lon=${myLon}&` + `appid=${api_key}`
       );
       const data = responseWeather.data;
       console.log("mydata1 : ", data);
@@ -45,7 +40,7 @@ export const Card = () => {
 
   return (
     <div>
-      <div className="min-w-96 rounded-lg shadow bg-[#313131] border-[#535353] bg-opacity-90	">
+      <div className="min-w-72 md:min-w-96 rounded-lg shadow bg-[#313131] border-[#535353] bg-opacity-90	">
         <div className="relative w-full h-72 ">
           <MyCardData weatherData={myData} />
         </div>
