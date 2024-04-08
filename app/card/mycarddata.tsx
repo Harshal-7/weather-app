@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 import {
   ReactElement,
   JSXElementConstructor,
@@ -10,13 +11,19 @@ import {
 
 export const MyCardData = (weatherData: any) => {
   const myData = weatherData.weatherData;
+  let mySrc = myData ? myData.weather[0].icon : null;
+  if (mySrc === "01d") {
+    mySrc = "03d";
+  } else if (mySrc === "01n") {
+    mySrc = "03n";
+  }
 
   return (
     <div>
       {myData ? (
         <div className="relative text-white font-bold">
-          <div className="absolute top-5 p-4 w-full h-72 flex flex-col gap-2">
-            <div className="text-3xl text-center">
+          <div className="absolute top-2 p-2 w-full h-72 flex flex-col">
+            <div className="text-3xl text-center flex flex-col justify-center items-center">
               <div>
                 {myData ? myData.name : null},
                 <span className="ml-1">
@@ -24,9 +31,14 @@ export const MyCardData = (weatherData: any) => {
                 </span>
               </div>
               <div>{myData ? myData.weather[0].description : null}</div>
+              <img
+                src={`https://openweathermap.org/img/wn/${mySrc}@2x.png`}
+                alt=""
+                className="w-[130px] "
+              />
             </div>
 
-            <div className="text-white text-6xl text-center">
+            <div className="text-6xl text-center">
               {myData ? (myData.main.temp - 273).toFixed() : null}&#8451;
             </div>
           </div>

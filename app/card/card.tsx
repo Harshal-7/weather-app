@@ -42,15 +42,8 @@ export const Card = () => {
 
   return (
     <div>
-      <div className="min-w-96 rounded-lg shadow bg-[#313131] border-[#535353]">
+      <div className="min-w-96 rounded-lg shadow bg-[#313131] border-[#535353] bg-opacity-90	">
         <div className="relative w-full h-72 ">
-          <Image
-            src="/w8.jpeg"
-            alt="img"
-            width={500}
-            height={500}
-            className="absolute top-0"
-          />
           <MyCardData weatherData={myData} />
         </div>
         <div className="flex flex-col gap-y-1 justify-center items-center p-5 mt-2">
@@ -62,7 +55,7 @@ export const Card = () => {
           />
           <Button
             onClick={handleSubmit}
-            className="bg-[#313131] text-[#7525ff] border border-[#7525ff] font-bold hover:bg-[#1d1d1d] mt-2 rounded-xl"
+            className="bg-[#1d1d1d] text-[#fff] font-bold hover:bg-[#0f0f0f] mt-2 rounded-xl"
           >
             Search
           </Button>
