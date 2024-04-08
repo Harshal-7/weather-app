@@ -14,10 +14,10 @@ export const Card = () => {
   const [lon, setLon] = useState(0);
   const [myData, setMyData] = useState(null);
 
-  const api_key = "a3c6f81a551d355bec1871b1a5796110";
+  // const api_key = process.env.WEATHER_API;
 
   const base_url = "https://api.openweathermap.org/data/2.5/weather?";
-  const geoLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${api_key}`;
+  const geoLocation = `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${process.env.WEATHER_API}`;
 
   const handleSubmit = async () => {
     try {
@@ -27,7 +27,10 @@ export const Card = () => {
       const myLon = responseGeo.data[0].lon;
 
       const responseWeather = await axios.get(
-        base_url + `lat=${myLat}&` + `lon=${myLon}&` + `appid=${api_key}`
+        base_url +
+          `lat=${myLat}&` +
+          `lon=${myLon}&` +
+          `appid=${process.env.WEATHER_API}`
       );
       const data = responseWeather.data;
       console.log("mydata1 : ", data);
