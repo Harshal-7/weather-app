@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppin = Poppins({
@@ -28,6 +29,7 @@ export default function RootLayout({
           className="absolute top-0 left-0 w-full max-h-full object-cover blur-sm"
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );
