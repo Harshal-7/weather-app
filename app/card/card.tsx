@@ -38,7 +38,7 @@ export const Card = () => {
 
   return (
     <div className="z-50">
-      <div className="min-w-72 md:min-w-96 rounded-lg shadow bg-[#313131]/50 border-black backdrop-blur-xl	">
+      <div className="min-w-72 md:min-w-96 rounded-lg shadow bg-[#313131]/50 border-black">
         <div className="w-full h-fit">
           <MyCardData weatherData={myData} />
         </div>
