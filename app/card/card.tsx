@@ -8,10 +8,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { MyCardData } from "./mycarddata";
 import Image from "next/image";
 import { fetchWeatherData } from "@/utils/data";
+import { Loader2 } from "lucide-react";
 
 export const Card = () => {
   const [location, setLocation] = useState("");
   const [myData, setMyData] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const api_key = process.env.API_KEY;
 
@@ -26,10 +28,12 @@ export const Card = () => {
   }, []);
 
   const handleSubmit = async () => {
+    setLoading(true);
     const res = await fetchWeatherData(location);
     setMyData(res.location);
     console.log("RES : ", res);
     setLocation("");
+    setLoading(false);
   };
 
   return (
@@ -43,13 +47,20 @@ export const Card = () => {
             className=" bg-[#313131]/40 text-white border-[#535353]"
             placeholder="Enter city name"
             onChange={(e) => setLocation(e.target.value)}
+            value={location}
           />
-          <Button
-            onClick={handleSubmit}
-            className="bg-[#0f0f0f]/70 text-[#fff] font-semibold tracking-wider hover:bg-[#0f0f0f] mt-4 rounded-xl px-8"
-          >
-            Search
-          </Button>
+          {loading ? (
+            <Button className="bg-[#0f0f0f]/70 text-[#fff] font-semibold tracking-wider hover:bg-[#0f0f0f] mt-4 rounded-xl px-8">
+              <Loader2 className="w-5 h-5 animate-spin" />
+            </Button>
+          ) : (
+            <Button
+              onClick={handleSubmit}
+              className="bg-[#0f0f0f]/70 text-[#fff] font-semibold tracking-wider hover:bg-[#0f0f0f] mt-4 rounded-xl px-8"
+            >
+              Search
+            </Button>
+          )}
         </div>
       </div>
     </div>

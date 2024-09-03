@@ -2,9 +2,9 @@
 import axios from "axios";
 
 export const fetchWeatherData = async (location: any) => {
-  const api_key = process.env.API_KEY;
-  const base_url = process.env.BASE_URL;
-  const host = process.env.HOST;
+  const api_key = process.env.NEXT_PUBLIC_API_KEY;
+  const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+  const host = process.env.NEXT_PUBLIC_HOST;
 
   const options = {
     method: "GET",
