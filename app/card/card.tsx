@@ -42,7 +42,7 @@ export const Card = () => {
         <div className="w-full h-fit">
           <MyCardData weatherData={myData} />
         </div>
-        <div className="flex flex-col gap-y-1 justify-center items-center p-5 mt-2">
+        <div className="flex flex-col gap-y-1 justify-center items-center p-5 mt-2 px-8">
           <Input
             className=" bg-[#313131]/40 text-white border-[#535353]"
             placeholder="Enter city name"
@@ -56,7 +56,7 @@ export const Card = () => {
           ) : (
             <Button
               onClick={handleSubmit}
-              className="bg-[#0f0f0f]/70 text-[#fff] font-semibold tracking-wider hover:bg-[#0f0f0f] mt-4 rounded-xl px-8"
+              className="bg-[#0f0f0f]/60 text-[#fff] text-[16px] hover:bg-[#0f0f0f] mt-4 rounded-xl px-8 py-6"
             >
               Search
             </Button>

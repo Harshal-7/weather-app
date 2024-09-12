@@ -22,12 +22,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn("bg-[#1d1d1d] relative", poppin.className)}>
-        <img
-          src="/wp1.jpg"
-          alt="bg"
-          className="absolute top-0 left-0 w-full max-h-full object-cover blur-sm"
-        />
+      <body
+        className={cn(
+          "bg-[#1d1d1d] relative bg-[url('/wp1.jpg')] bg-cover backdrop-blur-sm",
+          poppin.className
+        )}
+      >
         {children}
         <Analytics />
       </body>

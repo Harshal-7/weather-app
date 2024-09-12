@@ -101,7 +101,7 @@ export const MyCardData = ({ weatherData }: any) => {
       {data ? (
         <div className="flex flex-col text-white font-bold py-4 max-w-[500px]">
           <div className="text-3xl text-center flex flex-col justify-center items-center gap-2.5 px-6">
-            <div className="p-4 text-emerald-400">
+            <div className="p-4 text-blue-600">
               {data?.location?.name},
               <span className="ml-1">{data?.location?.country}</span>
             </div>
@@ -112,7 +112,7 @@ export const MyCardData = ({ weatherData }: any) => {
             <img src={`/animated/${icon}`} alt="" className="w-32" />
           </div>
 
-          <div className="text-6xl text-center tracking-wider">
+          <div className="text-6xl text-center text-blue-600">
             {data?.current?.temp_c}&#8451;
           </div>
         </div>
